@@ -13,11 +13,11 @@ String::MFN - 'Normalize' a string in the manner of the mfn utility
 
 =head1 VERSION
 
-Version 1.11
+Version 1.13
 
 =cut
 
-our $VERSION = '1.11';
+our $VERSION = '1.13';
 
 =head1 SYNOPSIS
 
@@ -40,9 +40,26 @@ formatting.
 Normalization, in specific, consists of characters other than
 C<[A-Za-z0-9_-.+]> being removed, lowercasing of all letters,
 separation of internaCaps, separation of leading numerals from
-trailing non-numerals, replaecment of "bracketing" characters (C<<<
+trailing non-numerals, replacement of "bracketing" characters (C<<<
 {[(<>)]} >>>), replacement of ampersands, and collapsing (things that
 look like) repeating extentions.
+
+Some concrete examples (filenames found by googling for "mp3 playlist"):
+
+    Eurodance - DMA dance (Doop by Doop).mp3
+    eurodance-dma_dance-doop_by_doop.mp3
+
+    Faithless [Trance House I] - Insomnia (Monstermix).mp3
+    faithless-trance_house_i-insomnia-monstermix.mp3
+
+    Frank Sinatra & Count Basie - More.mp3
+    frank_sinatra_and_count_basie-more.mp3
+
+    Cornershop - Heavy Soup [Outro] [*] [*].mp3
+    cornershop-heavy_soup-outro.mp3
+
+    Soundtrack - American Pie 2\05 - Uncle Kracker - (Im Gonna) Split This Room In Half.mp3
+    soundtrack-american_pie_205-uncle_kracker-im_gonna-split_this_room_in_half.mp3
 
 =head1 FUNCTIONS
 

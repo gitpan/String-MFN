@@ -1,5 +1,9 @@
 Revision history for String-MFN
 
+1.13    2004-08-03
+        Tyop fixed.
+        Docs now have some choice (but not exhaustive) examples.
+
 1.11    2004-07-30
         mfn() now operates on $_ if no argument is passed.
         Minor doc fixes.
