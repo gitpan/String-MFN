@@ -11,22 +11,22 @@ our @EXPORT    = qw(&mfn);
 
 String::MFN - 'Normalize' a string in the manner of the mfn utility
 
-=head1 Version
+=head1 VERSION
 
-Version 1.0
+Version 1.11
 
 =cut
 
-our $VERSION = '1.0';
+our $VERSION = '1.11';
 
-=head1 Synopsis
+=head1 SYNOPSIS
 
     use String::MFN;
 
     my $sane_string = mfn($retarded_string);
     ...
 
-=head1 Description
+=head1 DESCRIPTION
 
 This module provides an mechanism for normalizing a string in the same
 manner filenames are by the utility mfn (the Moronic Filename
@@ -44,17 +44,17 @@ trailing non-numerals, replaecment of "bracketing" characters (C<<<
 {[(<>)]} >>>), replacement of ampersands, and collapsing (things that
 look like) repeating extentions.
 
-=head1 Functions
+=head1 FUNCTIONS
 
 =head2 mfn
 
 Applies normalization routines to a string. Returns the normalized
-string.
+string. If no argument is explicitly specified, mfn operates on C<$_>.
 
 =cut
 
 sub mfn {
-    my $string = shift;
+    my $string = ( @_ ? $_[0] : $_ );
     
     $string =~ s/^[\{\[\(\-_]+//;         # drop leading {[(-_
     $string =~ s/([a-z])([A-Z])/$1\_$2/g; # Insert '_' between caseSeparated words
@@ -80,11 +80,11 @@ sub mfn {
     return $string;
 }
 
-=head1 Author
+=head1 AUTHOR
 
 Shawn Boyette, C<< <mdxi@cpan.org> >>
 
-=head1 Bugs
+=head1 BUGS
 
 None known.
 
@@ -93,7 +93,7 @@ C<bug-string-mfn@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.  I will be notified, and then you'll automatically
 be notified of progress on your bug as I make changes.
 
-=head1 Copyright & License
+=head1 COPYRIGHT & LICENSE
 
 Copyright 2004 Shawn Boyette, All Rights Reserved.
 
