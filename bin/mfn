@@ -2,10 +2,10 @@
 
 # recursively seek and normalize files named by dipshits
 #
-# $Id: mfn 21 2004-11-16 21:35:02Z mdxi $
-  $ver = '$Rev: 21 $';
+# $Id: mfn 25 2005-03-03 16:28:59Z mdxi $
+  $ver = '$Rev: 25 $';
 
-# Copyright (c) 2003,2004 Shawn Boyette <mdxi@collapsar.net>
+# Copyright (c) 2003-2005 Shawn Boyette <mdxi@cpan.org>
 # All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -248,7 +248,7 @@ HELP
 
 sub version {
     $_[0] =~ s/[\$:]//g;
-    my $ver = "This is mfn, $_[0]\n";
+    my $ver = "This is mfn $_[0](of String::MFN $String::MFN::VERSION)\n";
     return $ver;
 }
 
@@ -260,6 +260,14 @@ mfn - The Moronic Filename Normalizer
 =head1 SYNOPSIS
 
     mfn [option]... [<tree>]
+
+    mdxi@fornax:~/tmp/JPEGZ4$ mfn
+    SEEN:589 RENAME:298 NOCLOB:1 FAILED:0
+    LOGFILE:/home/mdxi/.mfn/20050210T074901
+    mdxi@fornax:~/tmp/JPEGZ4$ cat /home/mdxi/.mfn/20050210T074901 | grep ^N
+    N /home/mdxi/tmp/JPEGZ4/hay guys.jpg (hay_guys.jpg)
+    mdxi@fornax:~/tmp/JPEGZ4$ display hay_guys.jpg 
+    mdxi@fornax:~/tmp/JPEGZ4$ mv hay\ guys.jpg hay_guys2.jpg 
 
 =head1 DESCRIPTION
 

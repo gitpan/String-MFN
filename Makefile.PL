@@ -5,10 +5,10 @@ use ExtUtils::MakeMaker;
 my @programs;
 
 for (split "\n", <<'QUERIES') {
-mfn|y|Moronic Filename Normalizer (Config::YAML reqd)
+mfn|y|Moronic Filename Normalizer (needs Config::YAML)
 QUERIES
     my ($program, $default, $description) = split /\|/, $_;
-    if (prompt("Do you want to install '$program', the $description?", 
+    if (prompt("Install '$program', the $description?", 
                $default) =~ /^y/) {
 	push(@programs, $program);
     }

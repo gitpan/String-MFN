@@ -1,5 +1,12 @@
 Revision history for String-MFN
 
+1.26    2005-03-03
+
+        * Leading-numeral regex now strips trailing period (if one exists)
+        * Doc updates
+        * More tests
+        * mfn(1p) now reports String::MFN version along with its own version
+
 1.17    2004-11-16
 
         * mfn(1p) now included in distro

@@ -13,11 +13,11 @@ String::MFN - 'Normalize' a string in the manner of the mfn utility
 
 =head1 VERSION
 
-Version 1.17
+Version 1.26
 
 =cut
 
-our $VERSION = '1.17';
+our $VERSION = '1.26';
 
 =head1 SYNOPSIS
 
@@ -28,29 +28,22 @@ our $VERSION = '1.17';
 
 =head1 DESCRIPTION
 
-This module provides an mechanism for normalizing a string in the same
-manner filenames are by the utility mfn (the Moronic Filename
-Normalizer).
+Normalizes a string in the same manner as the utility mfn -- the
+Moronic Filename Normalizer, which now uses String::MFN and is
+included in this distribution..
 
-Normalization, in brief, means converting the string to something
-which resembles a sane UNIX filename containing no special characters,
-while attempting to maintain information carried by the original
+Normalization, in brief, means modifying the string to resemble a sane
+UNIX filename while maintaining information carried by the original
 formatting.
 
 Normalization, in specific, consists of characters other than
-C<[A-Za-z0-9_-.+]> being removed, lowercasing of all letters,
+C<[\w\-\.\+]> being removed, lowercasing of all letters,
 separation of internaCaps, separation of leading numerals from
 trailing non-numerals, replacement of "bracketing" characters (C<<<
 {[(<>)]} >>>), replacement of ampersands, and collapsing (things that
 look like) repeating extentions.
 
 Some concrete examples (filenames found by googling for "mp3 playlist"):
-
-    Eurodance - DMA dance (Doop by Doop).mp3
-    eurodance-dma_dance-doop_by_doop.mp3
-
-    Faithless [Trance House I] - Insomnia (Monstermix).mp3
-    faithless-trance_house_i-insomnia-monstermix.mp3
 
     Frank Sinatra & Count Basie - More.mp3
     frank_sinatra_and_count_basie-more.mp3
@@ -61,12 +54,18 @@ Some concrete examples (filenames found by googling for "mp3 playlist"):
     Soundtrack - American Pie 2\05 - Uncle Kracker - (Im Gonna) Split This Room In Half.mp3
     soundtrack-american_pie_205-uncle_kracker-im_gonna-split_this_room_in_half.mp3
 
+    12. Only You (Bad Boys Remix)(Ft. The Notorious B.I.G.).mp3
+    12-only_you-bad_boys_remix-ft_the_notorious_b.i.g.mp3
+
+    Ultramagnetic MCs - Critical Beatdown.mp3.mp3.mp3
+    ultramagnetic_mcs-critical_beatdown.mp3
+
 =head1 FUNCTIONS
 
 =head2 mfn
 
-Applies normalization routines to a string. Returns the normalized
-string. If no argument is explicitly specified, mfn operates on C<$_>.
+Normalizes a string. Returns the normalized string. If no argument is
+given, mfn operates on C<$_>.
 
 =cut
 
@@ -79,7 +78,7 @@ sub mfn {
     $string =~ s/\s+/_/g;                 # change whitespace to '_'
     $string =~ s/\&/_and_/g;              # change '&' to "_and_"
     $string =~ s/[^\w\-\.\+]//g;          # drop if not word, '-', '.', '+'
-    $string =~ s/^(\d+)/$1-/;             # Add a hyphen after initial numbers
+    $string =~ s/^(\d+)\.?/$1-/;          # Add a hyphen after initial numbers (and optional .)
     $string =~ s/_+-+/-/g;                # collapse _- sequences
     $string =~ s/-+_+/-/g;                # collapse -_ sequences
     $string =~ s/(\-|\_|\.)+/$1/g;        # collapse -_.
@@ -88,8 +87,8 @@ sub mfn {
     $string =~ s/[_\-]+(\.[^\.]+)$/$1/;   # drop trailing -_ before extension
 
     if ($string =~ /\.(\w+?)$/) {         # collapse
-	my $ext = $1;                    # repeat
-	$string =~ s/(\.$ext)+$/\.$ext/; # extensions
+	my $ext = $1;                     # repeat
+	$string =~ s/(\.$ext)+$/\.$ext/;  # extensions
     }
 
     $string = lc($string);                # slam lowercase
@@ -103,7 +102,12 @@ Shawn Boyette, C<< <mdxi@cpan.org> >>
 
 =head1 BUGS
 
-None known.
+=over
+
+=item internaCap separation only works on Latin characters with no diacriticals.
+
+=back
+
 
 Please report any bugs or feature requests to
 C<bug-string-mfn@rt.cpan.org>, or through the web interface at
@@ -112,7 +116,7 @@ be notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2004 Shawn Boyette, All Rights Reserved.
+Copyright 2004,2005 Shawn Boyette, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
