@@ -3,6 +3,7 @@ MANIFEST
 META.yml # Will be created by "make dist"
 Makefile.PL
 README
+bin/mfn
 lib/String/MFN.pm
 t/00.load.t
 t/mfn.t

@@ -1,13 +1,20 @@
 Revision history for String-MFN
 
+1.17    2004-11-16
+
+        * mfn(1p) now included in distro
+
 1.13    2004-08-03
-        Tyop fixed.
-        Docs now have some choice (but not exhaustive) examples.
+
+        * Tyop fixed.
+        * Docs now have some choice (but not exhaustive) examples.
 
 1.11    2004-07-30
-        mfn() now operates on $_ if no argument is passed.
-        Minor doc fixes.
+
+        * mfn() now operates on $_ if no argument is passed.
+        * Minor doc fixes.
 
 1.0     2004-07-29
-        First version, released on an unsuspecting world.
-        Thanks to RJBS for help/prodding/etc.
+
+        * First version, released on an unsuspecting world.
+          Thanks to RJBS for help/prodding/etc.

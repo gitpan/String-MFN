@@ -5,6 +5,9 @@ briefly means converting the string to something which resembles a
 sane UNIX filename containing no special characters, while attempting
 to maintain information carried by the original formatting.
 
+Also included is a script, mfn, which recursively renames files to a
+nice UNIX-y standard format.
+
 INSTALLATION
 
 To install this module, run the following commands:

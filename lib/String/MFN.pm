@@ -13,11 +13,11 @@ String::MFN - 'Normalize' a string in the manner of the mfn utility
 
 =head1 VERSION
 
-Version 1.13
+Version 1.17
 
 =cut
 
-our $VERSION = '1.13';
+our $VERSION = '1.17';
 
 =head1 SYNOPSIS
 
