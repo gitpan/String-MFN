@@ -13,11 +13,11 @@ String::MFN - 'Normalize' a string in the manner of the mfn utility
 
 =head1 VERSION
 
-Version 1.26
+Version 1.27
 
 =cut
 
-our $VERSION = '1.26';
+our $VERSION = '1.27';
 
 =head1 SYNOPSIS
 
@@ -28,13 +28,9 @@ our $VERSION = '1.26';
 
 =head1 DESCRIPTION
 
-Normalizes a string in the same manner as the utility mfn -- the
-Moronic Filename Normalizer, which now uses String::MFN and is
-included in this distribution..
-
-Normalization, in brief, means modifying the string to resemble a sane
-UNIX filename while maintaining information carried by the original
-formatting.
+Normalizes a string. Normalization, in brief, means modifying the
+string to resemble a sane UNIX[TM] filename while retaining
+information carried by the original formatting.
 
 Normalization, in specific, consists of characters other than
 C<[\w\-\.\+]> being removed, lowercasing of all letters,
@@ -75,10 +71,11 @@ sub mfn {
     $string =~ s/^[\{\[\(\-_]+//;         # drop leading {[(-_
     $string =~ s/([a-z])([A-Z])/$1\_$2/g; # Insert '_' between caseSeparated words
     $string =~ s/[\{\[\(\<>)\]\}]/-/g;    # change remaining {[(<>)]} to '-'
+    $string =~ s/^(\d+)\. /$1-/;          # handle things that look like track numbers
     $string =~ s/\s+/_/g;                 # change whitespace to '_'
+    $string =~ s/^(\d+)([^\.\d])/$1-$2/;  # handle misc. initial sequence numbers
     $string =~ s/\&/_and_/g;              # change '&' to "_and_"
     $string =~ s/[^\w\-\.\+]//g;          # drop if not word, '-', '.', '+'
-    $string =~ s/^(\d+)\.?/$1-/;          # Add a hyphen after initial numbers (and optional .)
     $string =~ s/_+-+/-/g;                # collapse _- sequences
     $string =~ s/-+_+/-/g;                # collapse -_ sequences
     $string =~ s/(\-|\_|\.)+/$1/g;        # collapse -_.
@@ -116,7 +113,7 @@ be notified of progress on your bug as I make changes.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2004,2005 Shawn Boyette, All Rights Reserved.
+Copyright 2003-2005 Shawn Boyette, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

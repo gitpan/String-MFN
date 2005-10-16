@@ -1,5 +1,11 @@
 Revision history for String-MFN
 
+1.27    2005-10-16
+        * Fixed bug where strings like '23.foo' would become '23-foo'
+        * mfn(1p) now installs into /usr/local/bin (or where ever
+          PREFIX points
+        * Config::YAML is required if mfn(1p) is selected for install
+
 1.26    2005-03-03
 
         * Leading-numeral regex now strips trailing period (if one exists)

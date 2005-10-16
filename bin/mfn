@@ -1,9 +1,9 @@
-#!/usr/bin/perl
+#!perl
 
 # recursively seek and normalize files named by dipshits
 #
-# $Id: mfn 25 2005-03-03 16:28:59Z mdxi $
-  $ver = '$Rev: 25 $';
+# $Id: mfn 30 2005-10-16 18:28:53Z mdxi $
+  $ver = '$Rev: 30 $';
 
 # Copyright (c) 2003-2005 Shawn Boyette <mdxi@cpan.org>
 # All rights reserved.
