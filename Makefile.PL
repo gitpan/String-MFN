@@ -14,6 +14,7 @@ QUERIES
     if (prompt("Install '$program', the $description?", $default) =~ /^y/i) {
 	push(@programs, 'bin/mfn');
         $reqs{'Config::YAML'} = 0;
+	print STDOUT "\nInstalling mfn. Please read the manpage before using!\n\n"
     }
 }
 
