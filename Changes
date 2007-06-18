@@ -1,5 +1,9 @@
 Revision history for String-MFN
 
+1.29    2007-06-16
+	* PREFIX no longer hardcoded in Makefile.PL; now set to
+	  Perl's $Config{siteprefix}
+
 1.28    2006-12-23
         * Unicode classes/categories now used instead of simple regex
           character ranges and operators

@@ -16,11 +16,11 @@ String::MFN - Normalize a string to produce a sane Unix filename
 
 =head1 VERSION
 
-Version 1.28
+Version 1.29
 
 =cut
 
-our $VERSION = '1.28';
+our $VERSION = '1.29';
 
 =head1 SYNOPSIS
 
@@ -112,7 +112,7 @@ Shawn Boyette, C<< <mdxi@cpan.org> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2003-2006 Shawn Boyette, All Rights Reserved.
+Copyright 2003-2007 Shawn Boyette, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
